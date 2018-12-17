@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts, FetchPostsAction } from '../actions';
+import { fetchPosts, Action } from '../actions';
 
 interface Props {
-  fetchPosts: () => FetchPostsAction
+  fetchPosts: () => Action
 };
 
 class PostList extends React.Component<Props, {}> {
