@@ -1,7 +1,7 @@
 import jsonPlaceholder from '../apis/jsonPlaceholder';
-import { AxiosResponse } from 'axios';
 import { ActionCreator, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
+import { Post } from '../model/Post';
 
 export enum ActionTypes {
   FETCH_POSTS = 'FETCH_POSTS'
@@ -9,7 +9,7 @@ export enum ActionTypes {
 
 export interface FetchPostsAction {
   type: ActionTypes.FETCH_POSTS,
-  payload: AxiosResponse
+  payload: Post[]
 }
 
 export const fetchPosts: ActionCreator<
@@ -18,7 +18,7 @@ export const fetchPosts: ActionCreator<
   const response = await jsonPlaceholder.get('/posts');
   return dispatch({
     type: ActionTypes.FETCH_POSTS,
-    payload: response
+    payload: response.data
   });
 };
 
